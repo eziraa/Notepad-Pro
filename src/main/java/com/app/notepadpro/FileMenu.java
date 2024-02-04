@@ -43,7 +43,7 @@ class FileMenu extends Menu {
     }
 
     public  void  handleEvents(){
-
+            this.getNewFile();
     }
 
     public void getNewFile(){
