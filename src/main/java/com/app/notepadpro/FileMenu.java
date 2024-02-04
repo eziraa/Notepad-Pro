@@ -4,6 +4,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.KeyCombination;
 
 class FileMenu extends Menu {
     Menu fileMenu = new Menu("File");
@@ -27,7 +28,27 @@ class FileMenu extends Menu {
         this.renameItem = new MenuItem("Rename");
         this.closeItem = new MenuItem("Close");
         this.closeAllItem = new MenuItem("Close All");
-        this.exitItem = new MenuItem("Exit        CTRL+N");
+        this.exitItem = new MenuItem("Exit");
         this.getItems().addAll(this.newItem, this.openItem, this.openFolderItem, this.saveItem, this.saveAsItem, this.renameItem, this.closeItem, this.closeAllItem);
+    }
+
+    public void addAccelatorKey(){
+        this.newItem.setAccelerator(KeyCombination.keyCombination("Ctrl+A"));
+        this.openItem.setAccelerator(KeyCombination.keyCombination("Ctrl+O"));
+        this.saveItem.setAccelerator(KeyCombination.keyCombination("Ctrl+S"));
+        this.saveAsItem.setAccelerator(KeyCombination.keyCombination("Ctrl+Shift+S"));
+        this.renameItem.setAccelerator(KeyCombination.keyCombination("Alt + fn2"));
+        this.exitItem.setAccelerator(KeyCombination.keyCombination("Ctrl + 0"));
+
+    }
+
+    public  void  handleEvents(){
+
+    }
+
+    public void getNewFile(){
+        this.newItem.setOnAction(e->{
+            NotepadPro.textArea.clear();
+        });
     }
 }
