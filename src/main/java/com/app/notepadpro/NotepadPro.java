@@ -1,14 +1,14 @@
-package com.example.notepadpro;
+package com.app.notepadpro;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class NotepadPro extends Application {
-    public static Label label;
+    public static Label numberLabel;
 
     public static void main(String[] args) {
         launch(args);
@@ -16,7 +16,7 @@ public class NotepadPro extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        VBox vBox = new VBox();
+        VBox allContainer = new VBox();
         MenuBar topMenuBar = new MenuBar();
         TextArea textArea = new TextArea();
         Button saveBtn = new Button("Save");
@@ -32,11 +32,16 @@ public class NotepadPro extends Application {
         Menu toolsMenu = new Menu("Tools");
         Menu windowMenu = new Menu("Window");
         topMenuBar.getMenus().addAll(fileMenu,editMenu,searchMenu,viewMenu,encodingMenu,languageMenu,settingsMenu,toolsMenu,windowMenu);
-        textArea.setMinSize(500,500);
+        textArea.setMinSize(1200,800);
         textArea.setStyle("-fx-text-fill: blue;");
-        label = new Label();
-        label.setText("1");
-        Scene scene =  new Scene(vBox,800,600);
+        numberLabel = new Label();
+        numberLabel.setText("1");
+        numberLabel.setStyle("-fx-font-size: 20px;");
+        textArea.setStyle("-fx-font-size: 16px;");
+        HBox horizontalContainer = new HBox();
+        horizontalContainer.getChildren().addAll(numberLabel, textArea);
+        allContainer.getChildren().addAll(topMenuBar, horizontalContainer);
+        Scene scene =  new Scene(allContainer,1200,800);
         stage.setScene(scene);
         stage.show();
     }
